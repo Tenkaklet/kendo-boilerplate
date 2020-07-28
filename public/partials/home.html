@@ -1,0 +1,13 @@
+<h1>{{ message }}</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <kendo-grid k-options="gridOptions"></kendo-grid>
+        </div>
+        <div class="col-md-4">
+            <kendo-date-picker k-scope-field="datePicker" k-on-change="onChange()"></kendo-date-picker>
+            <p><small>{{ pickedDate }}</small></p>
+        </div>
+    </div>
+</div>
