@@ -4,13 +4,22 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+dotenv.config();
 
-var index = require('./routes/index');
+
+mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
+  console.log('connected to Db');
+});
+
+
+
+
+const authRoute = require('./routes/auth');
 var users = require('./routes/users');
 
 var app = express();
-
-// view engine setup
 
 
 // uncomment after placing your favicon in /public
@@ -21,8 +30,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use('/', index);
-app.use(express.static('public'));
+app.use('/auth', authRoute);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
@@ -46,7 +54,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  next();
 });
 
 module.exports = app;

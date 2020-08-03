@@ -1,0 +1,49 @@
+<div class="container">
+    <section class="col-md-6 offset-md-3">
+        <uib-tabset justified="true">
+            <uib-tab index="1">
+                <uib-tab-heading>
+                    LOGIN
+                </uib-tab-heading>
+                <form>
+                    <div class="form-group">
+                        <label for="login-email">E-mail</label>
+                        <input type="email" class="form-control" id="login-email" placeholder="max@max.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="login-password" placeholder="123 whatever...">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">LOGIN</button>
+                </form>
+            </uib-tab>
+            <uib-tab index="2">
+                <uib-tab-heading>
+                    REGISTER
+                </uib-tab-heading>
+                <div class="alert alert-dismissible alert-danger" ng-if="error">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>{{ error }}</strong>
+                </div>
+                <form ng-submit="register(user)">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" class="form-control" placeholder="Maximus"
+                            ng-model="user.username">
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email">E-mail</label>
+                        <input type="email" class="form-control" id="register-email placeholder=" max@max.com"
+                            ng-model="user.email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="register-password" placeholder="123 whatever..."
+                            ng-model="user.password">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">REGISTER</button>
+                </form>
+            </uib-tab>
+        </uib-tabset>
+    </section>
+</div>
