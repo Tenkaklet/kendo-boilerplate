@@ -12,4 +12,18 @@ angular.module('boiler').controller('RegistrationCtrl', ['$scope', 'Account', '$
             $scope.error = err.data;
         });
     };
+
+    $scope.login = function (user) {
+        Account.login(user)
+        .then(user => {
+            console.log(user);
+            $rootScope.currentUser = user.data.user.name;
+            $window.localStorage.kendo_token = user.data.token;
+            $window.localStorage.user = JSON.stringify(user.data);
+            $location.path('/');
+        })
+        .catch(err => {
+            $scope.error = err.data;
+        });
+    };
 }]);

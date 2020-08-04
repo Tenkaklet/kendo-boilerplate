@@ -1,7 +1,7 @@
 
 const app = angular.module('boiler', ['ngRoute', 'ngSanitize', 'kendo.directives', 'ui.bootstrap']);
 app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-    $locationProvider.html5Mode(true);
+    // $locationProvider.html5Mode(true);
     $routeProvider
     .when('/', {
         templateUrl: 'partials/home.html',
@@ -18,9 +18,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     })
 }])
 
-function loginRequired($location) {
+function loginRequired($location, $window) {
     console.log('login required');
-    const token = $window.localStorage.token;
+    const token = $window.localStorage.kendo_token;
+    console.log(token);
     if(!token) {
         $location.path('/register');
     } 

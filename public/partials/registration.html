@@ -5,14 +5,14 @@
                 <uib-tab-heading>
                     LOGIN
                 </uib-tab-heading>
-                <form>
+                <form ng-submit="login(user)">
                     <div class="form-group">
                         <label for="login-email">E-mail</label>
-                        <input type="email" class="form-control" id="login-email" placeholder="max@max.com">
+                        <input type="email" class="form-control" id="login-email" placeholder="max@max.com" ng-model="user.email">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" id="login-password" placeholder="123 whatever...">
+                        <input type="password" class="form-control" id="login-password" placeholder="123 whatever..." ng-model="user.password">
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">LOGIN</button>
                 </form>
